@@ -1,14 +1,36 @@
 package com.expensetracker.expense_tracker.Service;
 
 import com.expensetracker.expense_tracker.Entity.Expense;
+import com.expensetracker.expense_tracker.repository.ExpenseRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+@Service
+public class ExpenseService {
 
-public interface ExpenseService {
+    private final ExpenseRepository expenseRepository;
 
-    Expense add(String description, Integer amount);
-    Expense deduct(String description,Integer amount);
+    public ExpenseService(ExpenseRepository expenseRepository) {
+        this.expenseRepository = expenseRepository;
+    }
 
-    List<Expense> track(String username);
+  public String add(String description, Integer amount) {
+        Expense exp=new Expense();
+        exp.setDescription(description);
+        exp.setCredited(true);
+        exp.setAmount(amount);
+
+        expenseRepository.save(exp);
+        return "Amount Credited for :"+description+":"+amount;
+
+    }
+
+    Expense deduct(String description, Integer amount) {
+        return null;
+    }
+
+    List<Expense> track(String username) {
+        return null;
+    }
 
 }

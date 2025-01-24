@@ -25,8 +25,14 @@ public class ExpenseService {
 
     }
 
-    Expense deduct(String description, Integer amount) {
-        return null;
+   public String deduct(String description, Integer amount) {
+        Expense exp=new Expense();
+        exp.setDescription(description);
+        exp.setAmount(amount);
+        exp.setDebited(true);
+
+        expenseRepository.save(exp);
+        return "Amount debited for :"+description+":"+amount;
     }
 
     List<Expense> track(String username) {

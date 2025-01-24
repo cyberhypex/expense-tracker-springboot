@@ -23,4 +23,12 @@ public class ExpController {
         expenseService.add(description,amount);
         return "Money Credited with amount:"+ amount+" "+"against:"+description;
     }
+
+    @PostMapping("/debit/{description}/{amount}")
+    public String debit(@PathVariable String description,
+                        @PathVariable Integer amount
+                        ){
+        expenseService.deduct(description,amount);
+        return "Money debited for :"+description+" with amount :"+amount;
+    }
 }

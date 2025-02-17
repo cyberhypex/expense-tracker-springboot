@@ -35,8 +35,29 @@ public class ExpenseService {
         return "Amount debited for :"+description+":"+amount;
     }
 
+    public List<Expense> getAllCredited(){
+
+
+        return expenseRepository.findByIsCreditedTrue();
+    }
+
+
+
+
     List<Expense> track(String username) {
         return null;
     }
 
+    public List<Expense> findByIsDebitedTrue() {
+        return expenseRepository.findByIsDebitedTrue();
+    }
+
+    public Double getSumOfDebitedExpenses(){
+        return expenseRepository.sumofDebitedExpenses();
+    }
+
+
+    public Double getSumOfCreditedExpenses() {
+        return expenseRepository.sumOfCreditedExpenses();
+    }
 }
